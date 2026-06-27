@@ -69,7 +69,7 @@ export default function Landing() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-8">
               <Zap className="w-4 h-4" />
-              Powered by Groq AI + Llama 3.3 70B
+           Built by Lingesh • Powered by Groq + Llama 3.3 70B
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
@@ -308,7 +308,7 @@ export default function Landing() {
               <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
             </div>
             <div className="text-slate-500 text-sm">
-              © 2024 InterviewIQ AI. MCA GenAI Project.
+              © 2026 InterviewIQ AI.lingesh  GenAI Project.
             </div>
           </div>
         </div>
