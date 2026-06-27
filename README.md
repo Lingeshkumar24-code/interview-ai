@@ -38,76 +38,439 @@ Generate realistic interview questions, receive AI feedback, analyze resumes, an
 </p>
 
 > ⚡ Experience AI-powered interview simulations instantly.
+## 🏗️ System Architecture
+
+```mermaid
+graph TD
+
+A["👤 User"]
+B["💻 React + Vite Frontend"]
+C["⚡ FastAPI Backend"]
+D["🤖 Groq API<br/>Llama 3.3 70B"]
+E["🗄 PostgreSQL Database"]
+F["📄 Resume Parser"]
+G["📑 PDF Report Generator"]
+H["📊 Analytics Dashboard"]
+
+A -->|Uses| B
+B -->|REST API| C
+C -->|Generate Questions| D
+C -->|Store Data| E
+C -->|Parse Resume| F
+C -->|Generate Reports| G
+C -->|Statistics| H
+```
+
+## 🔄 Application Workflow
+
+```mermaid
 flowchart LR
 
-A[User Login]
-B[Choose Role]
-C[Generate Questions]
-D[AI Interview]
-E[Evaluate Answers]
-F[Performance Report]
-G[Career Suggestions]
+A["👤 User Login"]
+B["🎯 Select Job Role"]
+C["📄 Upload Resume (Optional)"]
+D["🤖 AI Generates Questions"]
+E["🎤 Answer Interview Questions"]
+F["🧠 AI Evaluates Answers"]
+G["📊 Performance Dashboard"]
+H["📄 Download PDF Report"]
+I["🚀 Career Recommendations"]
 
 A --> B
 B --> C
 C --> D
 D --> E
 E --> F
-F --> G 
+F --> G
+G --> H
+H --> I
+```
 
+## 🔐 Authentication Flow
+
+```mermaid
+sequenceDiagram
+
+participant User
+participant Frontend
+participant Backend
+participant Database
+
+User->>Frontend: Login
+Frontend->>Backend: POST /login
+Backend->>Database: Verify Credentials
+Database-->>Backend: User Found
+Backend-->>Frontend: JWT Token
+Frontend-->>User: Login Successful
+
+User->>Frontend: Open Dashboard
+Frontend->>Backend: Send JWT
+Backend-->>Frontend: Dashboard Data
+Frontend-->>User: Show Dashboard
+```
+
+## 🤖 AI Interview Pipeline
+
+```mermaid
+flowchart TD
+
+A["👤 Candidate"]
+
+B["📄 Resume Upload"]
+
+C["📑 Resume Parsing"]
+
+D["🧠 Skill Extraction"]
+
+E["🤖 Groq AI"]
+
+F["❓ Personalized Questions"]
+
+G["🎙 Candidate Answers"]
+
+H["📊 AI Evaluation"]
+
+I["📈 Performance Report"]
+
+J["🚀 Career Suggestions"]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+H --> I
+I --> J
+```
+
+## 🏛 Backend Architecture
+
+```mermaid
 graph TD
 
-User[👤 User]
+Client["🌐 React Frontend"]
 
-Frontend[React + Vite]
+API["⚡ FastAPI"]
 
-Backend[FastAPI]
+Auth["🔐 JWT Authentication"]
 
-Groq[Groq API
-Llama 3.3 70B]
+Interview["🎤 Interview Service"]
 
-DB[(PostgreSQL)]
+Resume["📄 Resume Service"]
 
-PDF[PDF Generator]
+Groq["🤖 Groq AI"]
 
-Resume[Resume Parser]
+Database["🗄 PostgreSQL"]
+
+PDF["📑 Report Generator"]
+
+Client --> API
+
+API --> Auth
+
+API --> Interview
+
+API --> Resume
+
+Interview --> Groq
+
+Interview --> Database
+
+Resume --> Groq
+
+Resume --> Database
+
+Interview --> PDF
+```
+
+## 🗄 Database Design
+
+```mermaid
+erDiagram
+
+USER {
+
+int id
+
+string name
+
+string email
+
+string password
+
+}
+
+INTERVIEW {
+
+int id
+
+string role
+
+string difficulty
+
+datetime created_at
+
+}
+
+QUESTION {
+
+int id
+
+string question
+
+}
+
+ANSWER {
+
+int id
+
+string answer
+
+int score
+
+}
+
+REPORT {
+
+int id
+
+float overall_score
+
+string feedback
+
+}
+
+USER ||--o{ INTERVIEW : creates
+
+INTERVIEW ||--o{ QUESTION : contains
+
+QUESTION ||--|| ANSWER : answered_by
+
+INTERVIEW ||--|| REPORT : generates
+```
+
+
+## 📡 API Request Flow
+
+```mermaid
+graph LR
+
+User["👤 User"]
+
+Frontend["💻 React"]
+
+API["⚡ FastAPI"]
+
+Auth["🔐 Auth API"]
+
+Interview["🎤 Interview API"]
+
+Resume["📄 Resume API"]
+
+Analytics["📊 Analytics API"]
+
+Groq["🤖 Groq"]
+
+Database["🗄 PostgreSQL"]
 
 User --> Frontend
 
-Frontend --> Backend
+Frontend --> Auth
 
-Backend --> DB
+Frontend --> Interview
+
+Frontend --> Resume
+
+Frontend --> Analytics
+
+Auth --> API
+
+Interview --> API
+
+Resume --> API
+
+Analytics --> API
+
+API --> Groq
+
+API --> Database
+```
+
+## 🧠 AI Answer Evaluation
+
+```mermaid
+flowchart LR
+
+A["Candidate Answer"]
+
+B["Groq AI"]
+
+C["Technical Score"]
+
+D["Communication"]
+
+E["Problem Solving"]
+
+F["Confidence"]
+
+G["Final Score"]
+
+A --> B
+
+B --> C
+
+B --> D
+
+B --> E
+
+B --> F
+
+C --> G
+
+D --> G
+
+E --> G
+
+F --> G
+```
+
+
+## 📈 User Journey
+
+```mermaid
+journey
+
+title InterviewIQ User Journey
+
+section Registration
+
+Create Account: 5: User
+
+Login: 5: User
+
+section Preparation
+
+Choose Role: 5: User
+
+Upload Resume: 4: User
+
+Generate Questions: 5: AI
+
+section Interview
+
+Answer Questions: 5: User
+
+AI Evaluation: 5: AI
+
+section Completion
+
+Dashboard: 5: User
+
+Download Report: 5: User
+
+Career Suggestions: 5: AI
+```
+
+## 🛠 Technology Stack
+
+```mermaid
+mindmap
+
+root((InterviewIQ AI))
+
+Frontend
+
+React
+
+Vite
+
+Tailwind CSS
+
+Framer Motion
+
+Recharts
+
+Backend
+
+FastAPI
+
+SQLAlchemy
+
+Pydantic
+
+Authentication
+
+JWT
+
+bcrypt
+
+Database
+
+PostgreSQL
+
+AI
+
+Groq
+
+Llama 3.3 70B
+
+Deployment
+
+Docker
+
+Render
+
+GitHub
+```
+
+## 🚀 Deployment Architecture
+
+```mermaid
+graph TD
+
+Developer["👨‍💻 Developer"]
+
+GitHub["📂 GitHub Repository"]
+
+Render["☁ Render"]
+
+Frontend["🌐 Frontend"]
+
+Backend["⚡ Backend"]
+
+Postgres["🗄 PostgreSQL"]
+
+Groq["🤖 Groq AI"]
+
+Users["👥 End Users"]
+
+Developer --> GitHub
+
+GitHub --> Render
+
+Render --> Frontend
+
+Render --> Backend
+
+Backend --> Postgres
 
 Backend --> Groq
 
-Backend --> Resume
+Users --> Frontend
+```
 
-Backend --> PDF
+<div align="center">
 
+# 🚀 Live Demo
 
+<a href="https://interview-ai-2-odxg.onrender.com/" target="_blank">
 
-graph LR
+<img src="https://img.shields.io/badge/🚀%20Launch%20InterviewIQ%20AI-Live%20Demo-success?style=for-the-badge"/>
 
-Resume --> AI
+</a>
 
-AI --> Questions
+### ⭐ Experience AI-Powered Interview Preparation in Real Time
 
-Questions --> Candidate
-
-Candidate --> Answers
-
-Answers --> LLM
-
-LLM --> Score
-
-Score --> Report
-
-flowchart TD
-
-PDF --> Text
-
-Text --> SkillExtraction
-
-SkillExtraction --> AIQuestions
-
-AIQuestions --> Interview
+</div>
