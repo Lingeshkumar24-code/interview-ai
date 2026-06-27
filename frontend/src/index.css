@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 @layer base {
-  * { @apply border-border; }
+  * { @apply border-white/10; }
   body {
     @apply bg-dark-900 text-slate-100 font-sans;
     background: #0F172A;
