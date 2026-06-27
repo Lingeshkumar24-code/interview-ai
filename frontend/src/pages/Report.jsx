@@ -275,7 +275,7 @@ export default function Report() {
             onClick={(e) => {
               e.preventDefault();
               const token = localStorage.getItem('token');
-              fetch(`http://localhost:8000/interviews/${id}/pdf`, { headers: { Authorization: `Bearer ${token}` } })
+              fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/interviews/${id}/pdf`, { headers: { Authorization: `Bearer ${token}` } })
                 .then((r) => r.blob())
                 .then((blob) => {
                   const url = URL.createObjectURL(blob);
