@@ -372,57 +372,40 @@ Download Report: 5: User
 
 Career Suggestions: 5: AI
 ```
-
 ## 🛠 Technology Stack
 
 ```mermaid
-mindmap
+graph TD
 
-root((InterviewIQ AI))
+A[InterviewIQ AI]
 
-Frontend
+A --> B[Frontend]
+B --> B1[React]
+B --> B2[Vite]
+B --> B3[Tailwind CSS]
+B --> B4[Framer Motion]
+B --> B5[Recharts]
 
-React
+A --> C[Backend]
+C --> C1[FastAPI]
+C --> C2[SQLAlchemy]
+C --> C3[Pydantic]
 
-Vite
+A --> D[Authentication]
+D --> D1[JWT]
+D --> D2[bcrypt]
 
-Tailwind CSS
+A --> E[Database]
+E --> E1[PostgreSQL]
 
-Framer Motion
+A --> F[AI]
+F --> F1[Groq API]
+F --> F2[Llama 3.3 70B]
 
-Recharts
-
-Backend
-
-FastAPI
-
-SQLAlchemy
-
-Pydantic
-
-Authentication
-
-JWT
-
-bcrypt
-
-Database
-
-PostgreSQL
-
-AI
-
-Groq
-
-Llama 3.3 70B
-
-Deployment
-
-Docker
-
-Render
-
-GitHub
+A --> G[Deployment]
+G --> G1[Docker]
+G --> G2[Render]
+G --> G3[GitHub]
 ```
 
 ## 🚀 Deployment Architecture
