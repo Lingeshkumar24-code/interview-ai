@@ -92,8 +92,10 @@ export default function Register() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
               <input
+                id="name"
+                name="name"
                 type="text"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -103,8 +105,10 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
               <input
+                id="email"
+                name="email"
                 type="email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -114,9 +118,11 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Password</label>
+              <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">Password</label>
               <div className="relative">
                 <input
+                  id="password"
+                  name="password"
                   type={showPassword ? 'text' : 'password'}
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -140,8 +146,10 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Confirm Password</label>
+              <label htmlFor="confirm" className="block text-sm font-medium text-slate-300 mb-2">Confirm Password</label>
               <input
+                id="confirm"
+                name="confirm"
                 type="password"
                 value={form.confirm}
                 onChange={(e) => setForm({ ...form, confirm: e.target.value })}
